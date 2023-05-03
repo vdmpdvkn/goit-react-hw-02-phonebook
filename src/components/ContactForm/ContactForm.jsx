@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Notify } from 'notiflix';
 import { Button, Input } from 'commonStyles/commonStyles.styled';
-import StyledForm from './Form.styled';
+import StyledForm from './ContactForm.styled';
 class Form extends Component {
   state = {
     name: '',
