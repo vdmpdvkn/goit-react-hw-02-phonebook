@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import Section from './Section/Section';
 import Form from './Form/Form';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
@@ -15,8 +16,6 @@ class App extends Component {
     filter: '',
   };
   addContact = object => {
-    console.log('object->', object);
-
     this.setState(({ contacts }) => ({
       contacts: [{ id: nanoid(), ...object }, ...contacts],
     }));
@@ -42,12 +41,16 @@ class App extends Component {
       this;
     return (
       <>
-        <Form check={contacts} addContact={addContact} contacts={contacts} />
-        <Filter text={filter} changeFilter={changeFilter} />
-        <ContactList
-          contacts={filterContactsOnInput()}
-          deleteById={deleteById}
-        />
+        <Section title={'Phonebook'}>
+          <Form check={contacts} addContact={addContact} contacts={contacts} />
+        </Section>
+        <Section title={'Contacts'}>
+          <Filter text={filter} changeFilter={changeFilter} />
+          <ContactList
+            contacts={filterContactsOnInput()}
+            deleteById={deleteById}
+          />
+        </Section>
       </>
     );
   }

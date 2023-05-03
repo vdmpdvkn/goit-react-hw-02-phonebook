@@ -1,18 +1,25 @@
+import propTypes from 'prop-types';
+import { Button } from 'commonStyles/commonStyles.styled';
+import StyledUl from './ContactsList.styled';
 const ContactList = ({ contacts, deleteById }) => (
-  <ul>
+  <StyledUl>
     {contacts.map(contact => (
       <li key={contact.id}>
         {contact.name}: {contact.number}
-        <button
+        <Button
           type="button"
           onClick={() => {
             deleteById(contact.id);
           }}
         >
           Delete
-        </button>
+        </Button>
       </li>
     ))}
-  </ul>
+  </StyledUl>
 );
+ContactList.propTypes = {
+  contacts: propTypes.array.isRequired,
+  deleteById: propTypes.func.isRequired,
+};
 export default ContactList;

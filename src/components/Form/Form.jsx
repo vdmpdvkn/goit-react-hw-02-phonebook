@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Notify } from 'notiflix';
-
+import { Button, Input } from 'commonStyles/commonStyles.styled';
+import StyledForm from './Form.styled';
 class Form extends Component {
   state = {
     name: '',
@@ -10,10 +11,7 @@ class Form extends Component {
     const isIncludes = objArr.some(
       element => element.name.toLowerCase() === name.toLowerCase()
     );
-    if (isIncludes) {
-      return true;
-    }
-    return false;
+    return isIncludes ? true : false;
   };
   formReset = () => {
     this.setState({ name: '', number: '' });
@@ -40,10 +38,10 @@ class Form extends Component {
     const { onFormSubmit, onInputChange } = this;
     const { name, number } = this.state;
     return (
-      <form onSubmit={onFormSubmit}>
+      <StyledForm onSubmit={onFormSubmit}>
         <label>
           Name
-          <input
+          <Input
             onChange={onInputChange}
             value={name}
             type="text"
@@ -55,7 +53,7 @@ class Form extends Component {
         </label>
         <label>
           Phone
-          <input
+          <Input
             onChange={onInputChange}
             value={number}
             type="tel"
@@ -66,8 +64,8 @@ class Form extends Component {
           />
         </label>
 
-        <button type="submit">Добавить контакт</button>
-      </form>
+        <Button type="submit">Add contact</Button>
+      </StyledForm>
     );
   }
 }
