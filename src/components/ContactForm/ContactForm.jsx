@@ -7,7 +7,7 @@ class Form extends Component {
     name: '',
     number: '',
   };
-  isUnique = (objArr, name) => {
+  isNotUnique = (objArr, name) => {
     const isIncludes = objArr.some(
       element => element.name.toLowerCase() === name.toLowerCase()
     );
@@ -19,7 +19,7 @@ class Form extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     const { name } = event.currentTarget.elements;
-    if (this.isUnique(this.props.check, name.value)) {
+    if (this.isNotUnique(this.props.check, name.value)) {
       Notify.info(`${name.value} is already in your contacts`);
       return;
     }
